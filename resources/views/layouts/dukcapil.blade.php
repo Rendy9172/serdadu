@@ -30,8 +30,8 @@
                     class="dk-logo-img">
             </div>
             <div class="dk-sidebar__brand-text">
-                <span class="dk-brand-title">MAGANG UMPO</span>
-                <small class="dk-brand-subtitle">Statistik Dukcapil</small>
+                <span class="dk-brand-title">Serdadu</span>
+                <small class="dk-brand-subtitle">Sistem Rekap Data Terpadu</small>
             </div>
         </div>
 
@@ -87,14 +87,14 @@
                     <span class="dk-title-toggle__text">Menu</span>
                 </button>
                 <div class="dk-topbar__tagline">
-                    <span class="dk-topbar__tagline-label">Statistik Dukcapil</span>
-                    <small class="dk-topbar__tagline-note">Kabupaten Madiun &bull; Data terkini</small>
+                    <span class="dk-topbar__tagline-label">Statistik Data Penduduk</span>
+                    <small class="dk-topbar__tagline-note">Kabupaten Madiun</small>
                 </div>
             </div>
             <div class="ms-auto d-none d-lg-flex align-items-center">
                 <div class="text-end">
-                    <span class="fw-semibold d-block">Kabupaten Madiun</span>
-                    <small class="text-muted">Sumber: Dukcapil</small>
+                    <span class="fw-semibold d-block">Dinas Kependudukan dan Pencatatan Sipil</span>
+                    <small class="text-muted">Kab. Madiun</small>
                 </div>
             </div>
         </header>
@@ -113,8 +113,8 @@
                         class="dk-offcanvas-brand__img">
                 </div>
                 <div class="dk-offcanvas-brand__text">
-                    <span class="dk-offcanvas-brand__title">MAGANG UMPO</span>
-                    <small class="dk-offcanvas-brand__subtitle">Statistik Dukcapil</small>
+                    <span class="dk-offcanvas-brand__title">Serdadu</span>
+                    <small class="dk-offcanvas-brand__subtitle">Sistem Rekap Data Terpadu</small>
                 </div>
             </div>
             <button type="button" class="btn-close" data-bs-dismiss="offcanvas" aria-label="Close"></button>
@@ -240,3 +240,4 @@
 </body>
 
 </html>
+
