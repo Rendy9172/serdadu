@@ -26,6 +26,7 @@ body.bg-body {
 .dk-sidebar__brand {
   display: flex;
   align-items: center;
+  justify-content: center;
   gap: 0.75rem;
   margin-bottom: 2rem;
 }
@@ -79,11 +80,33 @@ body.bg-body {
   text-decoration: none;
   font-weight: 500;
   transition: all 0.15s ease;
+  border: none;
+  background: transparent;
+  width: 100%;
+  text-align: left;
+  cursor: pointer;
 }
 
-.dk-nav-link i {
-  width: 20px;
-  text-align: center;
+.dk-nav-link__icon {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  width: 22px;
+  height: 22px;
+  flex-shrink: 0;
+}
+.dk-nav-link__icon i {
+  font-size: 1.05rem;
+  line-height: 1;
+}
+.dk-nav-link__image {
+  width: 100%;
+  height: 100%;
+  object-fit: contain;
+  display: block;
+}
+.dk-nav-link__label {
+  flex: 1;
 }
 
 .dk-nav-link:hover,
@@ -285,10 +308,13 @@ body.bg-body {
 .dk-sidebar--collapsed {
   width: 72px;
 }
-.dk-sidebar--collapsed .dk-sidebar__brand > div,
-.dk-sidebar--collapsed .dk-nav-link span,
+.dk-sidebar--collapsed .dk-sidebar__brand-text,
+.dk-sidebar--collapsed .dk-nav-link .dk-nav-link__label,
 .dk-sidebar--collapsed .dk-sidebar__footer {
   display: none;
+}
+.dk-sidebar--collapsed .dk-sidebar__brand {
+  justify-content: center;
 }
 .dk-sidebar--collapsed .dk-sidebar__logo,
 .dk-sidebar--collapsed .dk-nav-link {
@@ -297,44 +323,77 @@ body.bg-body {
 .dk-sidebar--collapsed .dk-nav-link {
   padding: 0.7rem;
 }
-.dk-sidebar--collapsed .dk-nav-link i {
+.dk-sidebar--collapsed .dk-nav-link__icon {
   margin: 0;
 }
 .dk-main--expanded {
   margin-left: 72px;
 }
 
-.dk-sidebar-fab {
-  position: fixed;
-  top: 88px;
-  left: 208px;
-  transform: translate(-50%, 0);
-  width: 48px;
-  height: 48px;
-  border-radius: 50%;
-  background: #f8fafc;
-  color: #0f172a;
-  border: 2px solid #0f172a;
-  box-shadow: 0 10px 24px rgba(15, 23, 42, 0.2);
-  display: inline-flex;
+.dk-sidebar__toggle {
+  display: none;
+  margin-bottom: 1.5rem;
+}
+
+.dk-sidebar__toggle .dk-sidebar-fab {
+  border: none;
+  background: transparent;
+  color: rgba(226, 232, 240, 0.8);
+  box-shadow: none;
+  width: 100%;
+  padding: 0.7rem 0.9rem;
+  border-radius: 10px;
+  display: flex;
   align-items: center;
-  justify-content: center;
-  transition: left 0.25s ease, box-shadow 0.25s ease, background 0.2s ease;
-  z-index: 1100;
+  gap: 0.75rem;
+  justify-content: flex-start;
+  transition: background 0.2s ease, color 0.2s ease;
+}
+
+.dk-sidebar__toggle .dk-sidebar-fab:hover,
+.dk-sidebar__toggle .dk-sidebar-fab:focus-visible {
+  background: rgba(14, 165, 233, 0.2);
+  color: #ffffff;
+  outline: none;
+}
+
+@media (min-width: 992px) {
+  .dk-sidebar__toggle {
+    display: flex;
+  }
+
+  .dk-sidebar--collapsed .dk-sidebar__toggle {
+    justify-content: center;
+    margin-bottom: 1rem;
+  }
+
+  .dk-sidebar--collapsed .dk-sidebar__toggle .dk-sidebar-fab {
+    width: auto;
+    padding: 0.7rem;
+    border-radius: 12px;
+    justify-content: center;
+  }
 }
 .dk-sidebar-fab:hover {
   background: #e2e8f0;
-  box-shadow: 0 14px 28px rgba(15, 23, 42, 0.22);
+  color: #0f172a;
+  box-shadow: 0 10px 24px rgba(15, 23, 42, 0.16);
 }
 .dk-sidebar-fab__icon {
-  font-size: 1.2rem;
-  font-weight: 600;
-  line-height: 1;
-}
-.dk-sidebar--collapsed + .dk-sidebar-fab {
-  left: 68px;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  width: 22px;
+  height: 22px;
+  flex-shrink: 0;
 }
 
+.dk-sidebar-fab__image {
+  width: 100%;
+  height: 100%;
+  object-fit: contain;
+  display: block;
+}
 .dk-table tbody tr:nth-child(odd) td {
   background: #ffffff;
 }
@@ -550,6 +609,10 @@ body.bg-body {
    so the page feels consistent when the sidebar is hidden. Also hide the
    floating sidebar FAB on small screens. */
 @media (max-width: 991.98px) {
+  .dk-sidebar__toggle {
+    display: none;
+  }
+
   body.bg-body {
     background-color: #e2e8f0; /* same as .dk-main background */
     color: #0f172a;
@@ -562,8 +625,9 @@ body.bg-body {
   }
 
   /* Show floating FAB on mobile (positioned top-left) so users can open the sidebar/offcanvas
-     â€” styled smaller and placed near the header to mimic desktop toggle behavior. */
+     Ã¢â‚¬â€ styled smaller and placed near the header to mimic desktop toggle behavior. */
   .dk-sidebar-fab {
+    position: fixed;
     display: inline-flex;
     top: 18px;
     left: 12px;
@@ -580,7 +644,10 @@ body.bg-body {
     box-shadow: 0 8px 18px rgba(15,23,42,0.12);
     border: 1px solid rgba(15,23,42,0.06);
   }
-  .dk-sidebar-fab__icon { font-size: 0.95rem; }
+  .dk-sidebar-fab__icon {
+    width: 62%;
+    height: 62%;
+  }
 
   /* Make cards span full width with comfortable padding */
   .dk-card, .dk-tab-content .dk-tab-pane {
