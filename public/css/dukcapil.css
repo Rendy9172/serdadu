@@ -9,6 +9,12 @@ body.bg-body {
   color: #0f172a;
 }
 
+@media (min-width: 992px) {
+  html {
+    zoom: 0.8;
+  }
+}
+
 .dk-sidebar {
   position: fixed;
   top: 0;
